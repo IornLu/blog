@@ -1,0 +1,13 @@
+doctype html
+head
+    link(href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet")
+    link(href="/css/bootstrap.min.css", rel="stylesheet")
+    link(href="/css/global.css" rel="stylesheet")
+    link(href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css", rel="stylesheet")
+    title
+        = blog.pageTitle
+body(style={ height: '100%' })
+    script(src="//cdn.bootcss.com/jquery/3.2.0/jquery.min.js")
+    script(src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    include nav.pug
+    block content
