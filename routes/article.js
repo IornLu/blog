@@ -1,6 +1,23 @@
 const router = require('express').Router()
+const ArticleModel = require('../models/Article');
+const UserModel = require('../models/User')
+const markdown = require('markdown-it')();
 
-router.use('/', (req, res) => {
-    res.render('article', { pageTitle: 'Iron\'s blog ' });
+router.get('/', (req, res, next) => {
+    ArticleModel.getAllArticles()
+    .then(articles => {
+        res.render('article', { articles });
+    });
+});
+router.get('/:id', (req, res, next) => {
+    const { id } = req.params;
+    ArticleModel.getArticleById(id)
+    .then(article => {
+        article.content = markdown.render(article.content || '');
+        res.render('articleContent', { article });
+    })
+    .catch(err => {
+        res.status(404).send('404');
+    })
 })
 module.exports = router;

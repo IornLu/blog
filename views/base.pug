@@ -3,11 +3,17 @@ head
     link(href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet")
     link(href="/css/bootstrap.min.css", rel="stylesheet")
     link(href="/css/global.css" rel="stylesheet")
+    link(href="/css/helper.css" rel="stylesheet")
     link(href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css", rel="stylesheet")
+    link(href="/bootstrap-markdown/css/bootstrap-markdown.min.css", rel="stylesheet")
+    
     title
         = blog.pageTitle
 body(style={ height: '100%' })
     script(src="//cdn.bootcss.com/jquery/3.2.0/jquery.min.js")
     script(src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    script(src="/bootstrap-markdown/js/bootstrap-markdown.js")
+    script(src="/bootstrap-markdown/locale/bootstrap-markdown.zh.js")
+    script(src="//cdn.bootcss.com/markdown-it/8.3.1/markdown-it.js")
     include nav.pug
     block content

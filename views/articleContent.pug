@@ -1,0 +1,24 @@
+extends base.pug
+append content
+    .col-xs-12.col-md-10.col-md-offset-1.panel.panel-default.m-t-50
+        .panel-body
+            if(article)
+                h2
+                    = `${article.title}`
+                    small
+                        = `${article.createAt}`
+                .p-t-30
+                    != `${article.content}`
+    style.
+        .panel-body p{
+            font-size: 1.5em
+        }
+        .panel-body h2{
+            position: relative;
+        }
+        .panel-body small{
+            font-size:0.5em;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+        }

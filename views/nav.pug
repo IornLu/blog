@@ -3,11 +3,18 @@ include loginModal.pug
 nav.nav.navbar-default
     .container-fluid
         .navbar-header
-            a(class="navbar-brand" href="#") Iron's blog
+            a(class="navbar-brand" href="/") Iron's blog
         .collapse.navbar-collapse
             .navbar-right
                 ul.navbar-nav.nav
-                    li
-                        a(onClick=`$('#login-modal').modal('show')` style={ cursor:  'pointer'}) 登录
-script.
-    
+                    
+                        - const user = `${session.user}` == 'undefined'
+                        - if (user)
+                            li
+                                a(onclick=`$('#login-modal').modal('show')` style={ cursor:  'pointer'}) 登录
+                        - else
+                            li
+                                a(href='/admin/' style={ cursor:  'pointer'}) 管理后台
+                            li
+                                a(href='/logout/' style={ cursor:  'pointer'}) 登出
+

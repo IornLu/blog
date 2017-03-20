@@ -1,0 +1,26 @@
+extends ../base.pug
+
+append content
+    .col-xs-12.col-md-12
+        .col-xs-12.col-md-2
+            .list-group
+                a(class="list-group-item" href="/admin/article") 文章管理
+                a(class="list-group-item" href="/admin/user") 用户管理
+        .col-xs-12.col-md-10
+            table.table.table-striped.table-hover
+                thead
+                    th id
+                    th 标题
+                    th 创建日期
+                    th 
+                        button(class="btn btn-primary pull-right" onclick="window.location.href = '/admin/article/add'") 添加
+                tbody
+                    - articles.forEach(article => {
+                        tr
+                            td 
+                                =`${article._id}`
+                            td 
+                                =`${article.title}`
+                            td 
+                                =`${article.createAt}`
+                    - })

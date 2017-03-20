@@ -5,14 +5,32 @@ div(class="modal fade" tabindex="-1" id="login-modal")
                 button.close &times;
                 h4 登录
             .modal-body
-                form
+                div
+                    .alert.alert-danger#login-alert
                     .form-group
-                        input(class="form-control" name="name" placeholder="账号")
+                        input(class="form-control" name="email" placeholder="账号")
                     .form-group
-                        input(class="form-control" name="password" placeholder="密码")
-                    button(id="login-button" class="btn btn-primary btn-block") 登录
+                        input(type="password" class="form-control" name="password" placeholder="密码")
+                    button(id="login-button" class="btn btn-primary btn-block" onclick=`handleLogin()`)
+                        i.fa.fa-send
 script.
     $('#login-modal').modal({ show: false });
+    $('#login-alert').hide();
+    $('.close').click(() => {
+        $('#login-modal').modal('hide');
+    })
+    handleLogin = function () {
+        const email = $("[name='email']").val();
+        const password = $("[name='password']").val();
+        $.post('/login/', { email, password })
+        .done(() => {
+            window.location.href='/admin/'
+        })
+        .fail((jqXHR, textStatus) => {
+            $('#login-alert').show()
+            $('#login-alert').text(JSON.parse(jqXHR.responseText).message);
+        });
+    }
 style.
     .modal-body{
         padding-left: 25px;
