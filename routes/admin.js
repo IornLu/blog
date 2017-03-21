@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const ArticleModel = require('../models/Article');
-const permission = require('../middlewires/checkPermission');
 const muter = require('multer')();
 
 
@@ -25,7 +24,7 @@ router.get('/article', (req, res, next) => {
 
 
 
-router.post('/article',permission.checkSuperUser, muter.any(), (req, res, next) => {
+router.post('/article', muter.any(), (req, res, next) => {
     const { title, content } = req.body;
     const article = { title, content };
     ArticleModel.create(article)
@@ -50,7 +49,7 @@ router.delete('/article', (req, res, next) => {
     
 })
 
-router.post('/article/update',permission.checkSuperUser, (req, res, next) => {
+router.post('/article/update', (req, res, next) => {
     const { _id, title, content } = req.body;
     ArticleModel.update({ _id, title, content })
     .then(result => {
