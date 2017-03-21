@@ -1,0 +1,12 @@
+extends base.pug
+
+append content
+    div(class="text-center m-t-50")
+        h1(style={
+            'font-size': '1500%',
+        })
+            = errorCode
+        p(style={
+            'font-size': '2em',
+        })
+            = errorMessage

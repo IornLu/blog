@@ -17,7 +17,8 @@ router.get('/:id', (req, res, next) => {
         res.render('articleContent', { article });
     })
     .catch(err => {
-        res.status(404).send('404');
+        res.status(404);
+        next();
     })
 })
 module.exports = router;
