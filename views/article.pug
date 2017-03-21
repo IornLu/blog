@@ -4,7 +4,7 @@ append content
     div(class="col-xs-12 col-md-10 col-md-offset-1" style={ height: '70%', 'padding-top': '40px', 'margin-top': '60px'})
             if !articles.length
                 .panel.panel-default
-                h4 作者什么都没有发布，也不想搞个大新闻
+                h4(style={'text-align': 'center'}) 作者什么都没有发布，也不想搞个大新闻
 
             else
                 - articles.forEach(item => {
@@ -15,7 +15,7 @@ append content
                                 small.pull-right
                                     =`${item.createAt}`
                         .panel-body
-                            =`${item.content}`
+                            !=`${item.content}`
                         .panel-body
                             button(class="btn btn-primary pull-right" onclick=`window.location.href='/article/${item._id}'`) 阅读全文
                 - })
