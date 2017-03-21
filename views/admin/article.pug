@@ -26,7 +26,11 @@ append content
                             td
                                 .pull-right
                                     button(class="btn btn-primary" onclick=`window.location.href='/admin/article?id=${article._id}'`) 修改
-                                    button(class="btn btn-danger" onclick=`handleDeleteArticle('${article._id}')`) 删除
+                                    button(
+                                        class="btn btn-danger"
+                                        onclick=`handleDeleteArticle('${article._id}')`
+                                        style={ 'margin-left': '8px' }
+                                        ) 删除
                     - })
     script.
         handleDeleteArticle = (id) => {
