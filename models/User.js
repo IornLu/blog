@@ -9,5 +9,5 @@ module.exports = {
     },
     getUserById: _id => {
         return UserModel.findOne({ _id }).exec();
-    }
+    },
 }

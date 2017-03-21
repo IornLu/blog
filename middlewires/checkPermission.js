@@ -18,7 +18,6 @@ module.exports = {
     checkSuperUser: (req, res, next) => {
         UserModel.getUserById(req.session.user)
         .then(user => {
-            console.log(user);
             if (user === null || !user.superUser) {
                 return res.status(403).render('error', {
                     errorCode: 401,

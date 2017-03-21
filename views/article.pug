@@ -10,11 +10,11 @@ append content
                 - articles.forEach(item => {
                     .panel.panel-default
                         .panel-heading
-                            h3.panel-title
+                            h3(class="panel-title" style={ 'font-size': '300%'})
                                 =`${item.title}`
-                                small.pull-right
+                                small(class="pull-right" style={ 'font-size': '35%' })
                                     =`${item.createAt}`
-                        .panel-body
+                        div(class="panel-body" style={ 'font-size': '200%' })
                             !=`${item.content}`
                         .panel-body
                             button(class="btn btn-primary pull-right" onclick=`window.location.href='/article/${item._id}'`) 阅读全文

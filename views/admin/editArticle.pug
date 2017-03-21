@@ -1,0 +1,19 @@
+extends ../base
+
+append content
+    .col-xs-12.col-md-10.col-md-offset-1.p-t-30
+        form(action="/admin/article/update" method="POST")
+            input(type="hidden" value=`${article._id}` name="_id")
+            .input-group.input-lg.col-xs-12.col-md-12.m-b-20
+                input(class="form-control" placeholder="文章标题" name='title' value=`${article.title}`)
+            - const content = `${article.content}`
+            textarea(id="markdown" name="content")
+                != content
+            .m-t-20
+                .col-xs-12.col-md-6.p-l-5.p-r-5
+                    button(type="button" class="btn btn-danger btn-block" onclick=`window.location.href = '/admin'`) 返回
+                .col-xs-12.col-md-6.p-l-5.p-r-5
+                    button.btn.btn-primary.btn-block 提交
+    script.
+        $('#markdown').markdown({ height: 450, language: 'zh' })
+        console.log($('#markdown').val())

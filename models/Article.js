@@ -9,5 +9,11 @@ module.exports = {
     },
     getAllArticles: () => {
         return Article.find().sort().addCreateAt().exec();
+    },
+    remove: _id => {
+        return Article.remove({ _id }).exec();
+    },
+    update: article => {
+        return Article.updateOne({ _id: article._id }, article);
     }
 }
