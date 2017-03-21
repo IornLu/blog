@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
     ArticleModel.getAllArticles()
     .then(articles => {
         articles.forEach(article => {
-            article.content = markdown.render(article.content).slice(0, 100);
+            article.content = markdown.render(article.content).slice(0, 300);
         })
         res.render('article', { articles });
     });
